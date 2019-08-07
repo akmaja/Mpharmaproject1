@@ -1,0 +1,50 @@
+<html> 
+
+<head> 
+<title> favorites / bookmark title goes here </title>
+</head>
+
+<body bgcolor="white" text="black">
+
+<h1> CODES </h1>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Category Code</th>
+				<th>Diagnosis Code</th>
+				<th>Full Code</th>
+				<th>Abr Decription</th>
+				<th>Full Decription</th>
+				<th>Category Title</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			{% for thread in threads.items %}
+			<tr>
+				<td>{{thread.category_code}}</td>
+				<td>{{thread.diagnosis_code}}</td>
+				<td>{{thread.full_code}}</td>
+				<td>{{thread.abv_description}}</td>
+				<td>{{thread.full_description}}</td>
+				<td>{{thread.category_title}}</td>
+			</tr>
+			{% endfor %}
+			
+		</tbody>
+	
+	
+   </table>
+
+	{% for page in threads.iter_pages() %}
+		{% if page %}
+		<a href=" {{ url_for('get_codes_batches', page_num=page)}}">{{ page }}</a>
+		{% else %}
+			...
+		{% endif %}
+
+	{% endfor %}
+
+</body>
+
+</html>
